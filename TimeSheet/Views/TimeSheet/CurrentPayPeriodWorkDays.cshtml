@@ -1,8 +1,23 @@
 ﻿@model WorkDaysViewModel
 
-@foreach (var workDay in Model.WorkDays)
-{
-    <h1>@workDay.ClockIn</h1>
-    <h1>@workDay.ClockOut</h1>
-    <h1>@workDay.HoursWorked</h1>
-}
+<br />
+<table class="table table-bordered" style="color: white;">
+    <thead class="thead-dark">
+        <tr>            
+            <th scope="col">Time In</th>
+            <th scope="col">Time Out</th>
+            <th scope="col">Calculated Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var workDay in Model.WorkDays)
+        {
+            <tr>
+                <td>@workDay.ClockIn</td>
+                <td>@workDay.ClockOut</td>
+                <td>@workDay.HoursWorked</td>
+            </tr>
+        }
+</table>
+        
+
