@@ -82,7 +82,15 @@ namespace TimeSheet.Services
 
             newWorkDay.Date = newWorkDay.ClockIn;
             newWorkDay.HoursWorked = calculateTotalHours(newWorkDay);
-            newWorkDay.TimeSheetReportId = _context.TimeSheetReports.Where(e => e.UserId == currentUser.Id).OrderBy(e => e.Id).ToList().Last().Id;
+            //newWorkDay.TimeSheetReportId = _context.TimeSheetReports.Where(e => e.UserId == currentUser.Id).OrderBy(e => e.Id).ToList().Last().Id;
+            var currentReport = _context.TimeSheetReports.Where(e => e.UserId == currentUser.Id).OrderBy(e => e.Id).ToList().Last();
+            newWorkDay.TimeSheetReportId = currentReport.Id;
+
+            currentReport.TotalRegHours += newWorkDay.HoursWorked;
+            currentReport.TotalOTHours = (currentReport.TotalRegHours > 40 && !currentUser.Exempt) ? currentReport.TotalRegHours - 40 : 0;
+            currentReport.TotalPeriodPay = (currentReport.TotalRegHours * currentUser.HourlyWage) + (currentReport.TotalOTHours *
+                                            currentUser.HourlyWage * 1.5);
+
 
             _context.WorkDays.Add(newWorkDay);
 

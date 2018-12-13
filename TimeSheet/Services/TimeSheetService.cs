@@ -20,12 +20,12 @@ namespace TimeSheet.Services
             _userManager = userManager;
         }
 
-        public async Task<TimeSheetReport> GetCurrentPayPeriodReportAsync(User currentUser)
+        public TimeSheetReport GetCurrentPayPeriodReport(User currentUser)
         {
-            //return _context.TimeSheetReports.Where(e => e.UserId == currentUser.Id).OrderBy(e => e.PayPeriodId).Last();
-            var currentReport = _context.TimeSheetReports.Where(e => e.UserId == currentUser.Id).OrderBy(e => e.PayPeriodId).Last();
-            await computeReportAsync(currentReport);
-            return currentReport;
+            //var currentReport = _context.TimeSheetReports.Where(e => e.UserId == currentUser.Id).OrderBy(e => e.PayPeriodId).Last();
+            //currentReport = await ComputeReportAsync(currentReport);
+            //return currentReport;
+            return _context.TimeSheetReports.Where(e => e.UserId == currentUser.Id).OrderBy(e => e.PayPeriodId).Last();
         }
 
         public async Task<WorkDay[]> GetWorkDaysForCurrentPayPeriodAsync(User currentUser)
@@ -33,12 +33,19 @@ namespace TimeSheet.Services
             return await _context.WorkDays.Where(e => e.TimeSheetReport.UserId == currentUser.Id).ToArrayAsync();
         }
 
-        private async Task<bool> computeReportAsync(TimeSheetReport report)
+        //private async Task<bool> ComputeReportAsync(TimeSheetReport report)
+        //{
+        //    List<WorkDay> workDays = report.WorkDays;
+        //    report.TotalRegHours = workDays.Sum(e => e.HoursWorked);
+        //    var saveResult = await _context.SaveChangesAsync();
+        //    return saveResult == 1;
+        //}
+        private async Task<TimeSheetReport> ComputeReportAsync(TimeSheetReport report)
         {
             List<WorkDay> workDays = report.WorkDays;
             report.TotalRegHours = workDays.Sum(e => e.HoursWorked);
-            var saveResult = await _context.SaveChangesAsync();
-            return saveResult == 1;
+            await _context.SaveChangesAsync();
+            return report;
         }
     }
 }

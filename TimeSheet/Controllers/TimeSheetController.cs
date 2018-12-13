@@ -29,7 +29,7 @@ namespace TimeSheet.Controllers
         public async Task<IActionResult> CurrentTimeSheetReport()
         {
             var currentUser = await GetCurrentUserAsync();
-            var report = await _timeSheetService.GetCurrentPayPeriodReportAsync(currentUser);
+            var report = _timeSheetService.GetCurrentPayPeriodReport(currentUser);
 
             var model = new TimeSheetViewModel()
             {
