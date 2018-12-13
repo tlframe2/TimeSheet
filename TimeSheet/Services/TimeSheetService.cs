@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,15 +11,17 @@ namespace TimeSheet.Services
     public class TimeSheetService : ITimeSheetService
     {
         private ApplicationDbContext _context;
+        private UserManager<User> _userManager;
 
-        public TimeSheetService(ApplicationDbContext context)
+        public TimeSheetService(ApplicationDbContext context, UserManager<User> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
-        public Task<TimeSheetReport> GetCurrentPayPeriodReport()
+        public TimeSheetReport GetCurrentPayPeriodReport(User currentUser)
         {
-            throw new NotImplementedException();
+            return _context.TimeSheetReports.Where(e => e.UserId == currentUser.Id).OrderBy(e => e.PayPeriodId).Last();
         }
     }
 }
