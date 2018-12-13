@@ -1,28 +1,22 @@
 ﻿@model TimeSheetViewModel
 
-
 <br />
 <table class="table table-bordered">
     <thead class="thead-dark">
         <tr>
             <th scope="col">Period Start Date</th>
-            <th scope="col">Period Start Date</th>
+            <th scope="col">Period End Date</th>
             <th scope="col">Total Regular Hours Worked</th>
             <th scope="col">Total Overtime Hours Worked</th>
             <th scope="col">Total Period Pay</th>
         </tr>
     </thead>
-    <tbody>
-        
+    <tbody>        
             <tr>
                 <td>@Model.Report.PayPeriodId</td>
                 <td>@Model.Report.PayPeriodId</td>
                 <td>@Model.Report.TotalRegHours</td>
                 <td>@Model.Report.TotalOTHours</td>
                 <td>@Model.Report.TotalPeriodPay</td>
-            </tr>
-        
+            </tr>        
 </table>
-
-
-

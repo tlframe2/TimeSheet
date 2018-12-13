@@ -21,45 +21,44 @@
             <td><button type="submit" class="btn btn-dark btn-group-sm">Add</button></td>
         </tr>
     </tbody>
-</table>
--->
+</table>--> 
+
 <form asp-action="AddWorkDay" method="POST">
-    <div id="Payrollcontainer">
-        <div class="row d-flex" id="WorkDayUpperHalf">
-            <div class="col-sm-4">
-                PayPeriod<br />
-                Start Date - End Date
-            </div>
-            <div class="col-sm-4">
-                Name<br />
-                ID<br />
-                Dept<br />
-                Title<br />
-                Email
-            </div>
-            <div class="col-sm-4">
-                Supervisor
-            </div>
-        </div>
-        <div class="row d-flex" id="WorkDayLowerHalf">
-            <div class="col-sm-3">
-                <label asp-for="ClockIn">Clock In Time:</label>
-            </div>
-            <div class="col-sm-3">
-                <input asp-for="ClockIn" type="datetime-local" id="ClockIn" value="2018-12-13T09:30:00" />
-            </div>
-            <div class="col-sm-3">
-                <label asp-for="ClockOut">Clock Out Time:</label>
-            </div>
-            <div class="col-sm-3">
-                <input asp-for="ClockOut" type="datetime-local" id="ClockOut" value="2018-12-13T11:30:00" />
-            </div>
-        </div>
-        <div class="row d-flex" id="WorkDayButton">
-            <div class="col-sm-12">
-                <button type="submit" onclick="myFunction()" class="btn btn-dark btn-group-sm">Add</button>
-            </div>
-        </div>
-    </div>
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Pay Period<br />
+                Start Date - End Date</td>
+                <td>
+                    Name<br />
+                    Employee ID<br />
+                </td>
+                <td>
+                    Dept<br />
+                    Title<br />
+                </td>
+                <td>
+                    Title<br />
+                    Email<br />
+                </td>
+                <td>
+                    Supervisor
+                </td>
+
+            </tr>
+            <tr>
+                <td><label asp-for="ClockIn">Clock In Time:</label></td>
+                <td><input asp-for="ClockIn" type="datetime-local" id="ClockIn" value="2018-12-13T09:30:00" /></td>
+                <td><label asp-for="ClockOut">Clock Out Time:</label></td>
+                <td><input asp-for="ClockOut" type="datetime-local" id="ClockOut" value="2018-12-13T11:30:00" /></td>
+                <td><button type="submit" onclick="myFunction()" class="btn btn-dark btn-group-sm">Add</button></td>
+            </tr>
+        </tbody>
+    </table>
 </form>
 <!--<script src="~/js/site.js"></script>-->

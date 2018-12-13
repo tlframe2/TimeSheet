@@ -82,6 +82,12 @@ body {
 
 .table table-bordered {
     border: 1px solid black;
+    
+}
+
+#reportLinks > a {
+    margin-top: 25px;
+    font-size: medium; 
 }
 
 /*div {

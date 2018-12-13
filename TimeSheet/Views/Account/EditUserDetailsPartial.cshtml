@@ -1,5 +1,5 @@
 ﻿@model User
-
+<!--
 <form asp-action="EditUserDetails" method="POST">
     <label asp-for="FirstName">First Name:</label>
     <input asp-for="FirstName" />
@@ -8,4 +8,21 @@
     <label asp-for="HourlyWage">Hourly Wage:</label>
     <input asp-for="HourlyWage" />
     <button type="submit">Update</button>
+</form>
+    -->
+
+<form asp-action="EditUserDetails" method="POST">
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col"><label asp-for="FirstName">First Name:</label></th>
+                <th scope="col"><input asp-for="FirstName" /></th>
+                <th scope="col"><label asp-for="LastName">Last Name:</label></th>
+                <th scope="col"><input asp-for="LastName" /></th>
+                <th scope="col"><label asp-for="HourlyWage">Hourly Wage:</label></th>
+                <th scope="col"><input asp-for="HourlyWage" /></th>
+                <th><button type="submit" class="btn btn-dark btn-group-sm">Update</button></th>
+            </tr>
+        </thead>
+    </table>
 </form>
