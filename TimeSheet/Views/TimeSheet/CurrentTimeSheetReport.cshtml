@@ -1,57 +1,28 @@
 ﻿@model TimeSheetViewModel
 
+
+<br />
 <table class="table table-bordered">
     <thead class="thead-dark">
         <tr>
-            <th scope="col">Days of the Week</th>
-            <th scope="col">Time In</th>
-            <th scope="col">Time Out</th>
-            <th scope="col">Calculated Total</th>
+            <th scope="col">Period Start Date</th>
+            <th scope="col">Period Start Date</th>
+            <th scope="col">Total Regular Hours Worked</th>
+            <th scope="col">Total Overtime Hours Worked</th>
+            <th scope="col">Total Period Pay</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <th scope="row">Sunday</th>
-            <td><input class="form-control" type="time"></td>
-            <td><input class="form-control" type="time"></td>
-            <td></td>
-
-        </tr>
-        <tr>
-            <th scope="row">Monday</th>
-            <td><input class="form-control" type="time"></td>
-            <td><input class="form-control" type="time"></td>
-            <td>fat</td>
-        </tr>
-        <tr>
-            <th scope="row">Tuesday</th>
-            <td><input class="form-control" type="time"></td>
-            <td><input class="form-control" type="time"></td>
-            <td>twitter</td>
-        </tr>
-        <tr>
-            <th scope="row">Wednesday</th>
-            <td><input class="form-control" type="time"></td>
-            <td><input class="form-control" type="time"></td>
-            <td>twitter</td>
-        </tr>
-        <tr>
-            <th scope="row">Thursday</th>
-            <td><input class="form-control" type="time"></td>
-            <td><input class="form-control" type="time"></td>
-            <td>twitter</td>
-        </tr>
-        <tr>
-            <th scope="row">Friday</th>
-            <td><input class="form-control" type="time"></td>
-            <td><input class="form-control" type="time"></td>
-            <td>twitter</td>
-        </tr>
-        <tr>
-            <th scope="row">Saturday</th>
-            <td><input class="form-control" type="time"></td>
-            <td><input class="form-control" type="time"></td>
-            <td>twitter</td>
-        </tr>
-    </tbody>
+        
+            <tr>
+                <td>@Model.Report.PayPeriodId</td>
+                <td>@Model.Report.PayPeriodId</td>
+                <td>@Model.Report.TotalRegHours</td>
+                <td>@Model.Report.TotalOTHours</td>
+                <td>@Model.Report.TotalPeriodPay</td>
+            </tr>
+        
 </table>
+
+
+
