@@ -52,10 +52,6 @@ namespace TimeSheet.Controllers
             return View(model);
         }
 
-
-
-
-
         private Task<User> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
     }
 }

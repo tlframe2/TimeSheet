@@ -25,8 +25,6 @@ namespace TimeSheet.Services
 
             return await _userManager.UpdateAsync(currentUser);
         }
-
-        
     }
 }
 

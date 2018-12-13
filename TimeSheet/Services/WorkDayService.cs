@@ -24,6 +24,7 @@ namespace TimeSheet.Services
             DateTime recentPayPeriodStart = _context.PayPeriods.OrderBy(e => e.Id).Last().PeriodStartDate;
             DateTime recentPayPeriodEnd = _context.PayPeriods.OrderBy(e => e.Id).Last().PeriodEndDate;
 
+            // Creates new Pay Period and TimeSheet for that period if current date is past previous period end date
             if (DateTime.Now > recentPayPeriodEnd)
             {
                 PayPeriod newPayPeriod = new PayPeriod()
@@ -33,15 +34,6 @@ namespace TimeSheet.Services
                 };
 
                 _context.PayPeriods.Add(newPayPeriod);
-
-                //TimeSheetReport newTimeSheetReport = new TimeSheetReport()
-                //{
-                //    TotalRegHours = calculateTotalHours(newWorkDay),
-                //    TotalOTHours = 0,
-                //    TotalPeriodPay = currentUser.HourlyWage * calculateTotalHours(newWorkDay),
-                //    UserId = currentUser.Id,
-                //    PayPeriodId = newPayPeriod.Id
-                //};
 
                 TimeSheetReport newTimeSheetReport = new TimeSheetReport()
                 {
@@ -56,17 +48,9 @@ namespace TimeSheet.Services
                 _context.SaveChanges();
             }
 
+            // creates TimeSheet if user has none
             if (_context.TimeSheetReports.Where(e => e.UserId == currentUser.Id).Count() < 1)
             {
-                //TimeSheetReport newTimeSheetReport = new TimeSheetReport()
-                //{
-                //    TotalRegHours = calculateTotalHours(newWorkDay),
-                //    TotalOTHours = 0,
-                //    TotalPeriodPay = currentUser.HourlyWage * calculateTotalHours(newWorkDay),
-                //    UserId = currentUser.Id,
-                //    PayPeriodId = _context.PayPeriods.OrderBy(e => e.Id).ToList().Last().Id
-                //};
-
                 TimeSheetReport newTimeSheetReport = new TimeSheetReport()
                 {
                     TotalRegHours = 0,
@@ -80,17 +64,17 @@ namespace TimeSheet.Services
                 _context.SaveChanges();
             }
 
+            // Creates new instance of workDay
             newWorkDay.Date = newWorkDay.ClockIn;
             newWorkDay.HoursWorked = calculateTotalHours(newWorkDay);
-            //newWorkDay.TimeSheetReportId = _context.TimeSheetReports.Where(e => e.UserId == currentUser.Id).OrderBy(e => e.Id).ToList().Last().Id;
             var currentReport = _context.TimeSheetReports.Where(e => e.UserId == currentUser.Id).OrderBy(e => e.Id).ToList().Last();
             newWorkDay.TimeSheetReportId = currentReport.Id;
 
+            // Updates TimeSheet
             currentReport.TotalRegHours += newWorkDay.HoursWorked;
             currentReport.TotalOTHours = (currentReport.TotalRegHours > 40 && !currentUser.Exempt) ? currentReport.TotalRegHours - 40 : 0;
             currentReport.TotalPeriodPay = (currentReport.TotalRegHours * currentUser.HourlyWage) + (currentReport.TotalOTHours *
                                             currentUser.HourlyWage * 1.5);
-
 
             _context.WorkDays.Add(newWorkDay);
 

@@ -29,13 +29,5 @@ namespace TimeSheet.Services
         {
             return await _context.WorkDays.Where(e => e.TimeSheetReport.UserId == currentUser.Id).ToArrayAsync();
         }
-
-        private async Task<TimeSheetReport> ComputeReportAsync(TimeSheetReport report)
-        {
-            List<WorkDay> workDays = report.WorkDays;
-            report.TotalRegHours = workDays.Sum(e => e.HoursWorked);
-            await _context.SaveChangesAsync();
-            return report;
-        }
     }
 }

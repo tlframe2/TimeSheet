@@ -9,6 +9,5 @@ namespace TimeSheet.ViewModels.TimeSheetViewModels
     public class TimeSheetViewModel
     {
         public TimeSheetReport Report { get; set; }
-        public TimeSheetReport[] Reports { get; set; }
     }
 }
