@@ -1,15 +1,12 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using TimeSheet.Models;
 using TimeSheet.Services;
-using TimeSheet.ViewModels.AccountViewModels;
 
 namespace TimeSheet.Controllers
 {
+    // Used to edit user details
     public class AccountController : Controller
     {
         private readonly IUserService _userService;
