@@ -8,6 +8,6 @@ namespace TimeSheet.Services
 {
     public interface ITimeSheetService
     {
-        Task<TimeSheetReport> GetCurrentPayPeriodReport();
+        TimeSheetReport GetCurrentPayPeriodReport(User currentUser);
     }
 }

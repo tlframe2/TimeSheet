@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TimeSheet.Models;
 using TimeSheet.Services;
+using TimeSheet.ViewModels.TimeSheetViewModels;
 
 namespace TimeSheet.Controllers
 {
@@ -23,6 +24,19 @@ namespace TimeSheet.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        public async Task<IActionResult> CurrentTimeSheetReport()
+        {
+            var currentUser = await GetCurrentUserAsync();
+            var report = _timeSheetService.GetCurrentPayPeriodReport(currentUser);
+
+            var model = new TimeSheetViewModel()
+            {
+                Report = report
+            };
+
+            return View(model);
         }
 
 
