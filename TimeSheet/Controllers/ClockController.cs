@@ -9,10 +9,9 @@ using TimeSheet.Models;
 using TimeSheet.Services;
 using TimeSheet.ViewModels.ClockViewModels;
 
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace TimeSheet.Controllers
 {
+    // Used for clocking in employees
     public class ClockController : Controller
     {
         private readonly IWorkDayService _workDayService;
@@ -36,6 +35,7 @@ namespace TimeSheet.Controllers
             return View(model);
         }
 
+        // Records clock in/out times and calculates hours spent working
         public async Task<IActionResult> AddWorkDay(WorkDay newWorkDay)
         {
             if (!ModelState.IsValid)
@@ -46,10 +46,10 @@ namespace TimeSheet.Controllers
             var currentUser = await GetCurrentUserAsync();
             var successful = await _workDayService.AddWorkDayAsync(newWorkDay, currentUser);
 
-            if (!successful)
-            {
-                return BadRequest("Could not add workday.");
-            }
+            //if (!successful)
+            //{
+            //    return BadRequest("Could not add workday.");
+            //}
 
             return RedirectToAction("Index");
         }

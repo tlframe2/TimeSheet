@@ -1,13 +1,6 @@
-﻿using System;
-using System.Web;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TimeSheet.Data;
@@ -42,19 +35,15 @@ namespace TimeSheet
 
             services.AddDefaultIdentity<User>().AddEntityFrameworkStores<ApplicationDbContext>();
 
-            //services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+            // Services added
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IWorkDayService, WorkDayService>();
             services.AddScoped<ITimeSheetService, TimeSheetService>();
-            //services.AddScoped<IDbInit, DbInit>();
+
+            // Initializes database with 1st PayPeriod and Users
             services.AddTransient<Initializer>();
-            //services.AddTransient<PayPeriodInitializer>();
-
-
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -77,8 +66,6 @@ namespace TimeSheet
 
             app.UseAuthentication();
 
-            //dbInit.Initialize();
-
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
@@ -86,8 +73,7 @@ namespace TimeSheet
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            //userSeeder.Seed().Wait();
-            //periodSeeder.Seed().Wait();
+            // Seeds data
             seeder.Seed().Wait();
         }
     }
