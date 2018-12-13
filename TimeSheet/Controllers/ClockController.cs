@@ -46,11 +46,6 @@ namespace TimeSheet.Controllers
             var currentUser = await GetCurrentUserAsync();
             var successful = await _workDayService.AddWorkDayAsync(newWorkDay, currentUser);
 
-            //if (!successful)
-            //{
-            //    return BadRequest("Could not add workday.");
-            //}
-
             return RedirectToAction("Index");
         }
 
