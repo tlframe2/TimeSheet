@@ -1,0 +1,11 @@
+﻿@model User
+
+<form asp-action="EditUserDetails" method="POST">
+    <label asp-for="FirstName">First Name:</label>
+    <input asp-for="FirstName" />
+    <label asp-for="LastName">Last Name:</label>
+    <input asp-for="LastName" />
+    <label asp-for="HourlyWage">Hourly Wage:</label>
+    <input asp-for="HourlyWage" />
+    <button type="submit">Update</button>
+</form>

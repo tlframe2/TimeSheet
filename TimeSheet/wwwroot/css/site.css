@@ -1,0 +1,86 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+for details on configuring this project to bundle and minify static web assets. */
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-image: url("../images/background.jpg");
+}
+
+#HomeOpen {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-image: url("../images/time.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 740px;
+}
+
+#textbox {
+    width: 80%;
+    color: white;
+    padding: 30px;
+    text-align: center;
+    margin: auto;
+    /* Wrapping element */
+    /* Set some basic padding to keep content from hitting the edges */
+}
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
+
+#WorkDayUpperHalf, #WorkDayLowerHalf {
+    /*border-collapse: collapse;*/
+    font-weight: 900;
+    color: black;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 17px;
+    padding-bottom: 1%;
+    padding-right: 1%;
+    padding-left: 1%;
+    padding-top: 1%;
+    box-sizing: border-box;
+}
+
+#WorkDayButton {
+    text-align: right;
+    padding-right: 1%;
+    padding-bottom: 1%;
+    /*border: 1px solid black;*/
+}
+
+#Payrollcontainer {
+    border: 1px solid black;
+}
+
+
+
+
+/*div {
+  border: 1px solid black;
+}*/
