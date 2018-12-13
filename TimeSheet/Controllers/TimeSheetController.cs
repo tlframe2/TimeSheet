@@ -29,11 +29,24 @@ namespace TimeSheet.Controllers
         public async Task<IActionResult> CurrentTimeSheetReport()
         {
             var currentUser = await GetCurrentUserAsync();
-            var report = _timeSheetService.GetCurrentPayPeriodReport(currentUser);
+            var report = await _timeSheetService.GetCurrentPayPeriodReportAsync(currentUser);
 
             var model = new TimeSheetViewModel()
             {
                 Report = report
+            };
+
+            return View(model);
+        }
+
+        public async Task<IActionResult> CurrentPayPeriodWorkDays()
+        {
+            var currentUser = await GetCurrentUserAsync();
+            var workDays = await _timeSheetService.GetWorkDaysForCurrentPayPeriodAsync(currentUser);
+
+            var model = new WorkDaysViewModel()
+            {
+                WorkDays = workDays
             };
 
             return View(model);
