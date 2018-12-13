@@ -43,10 +43,7 @@ namespace TimeSheet.Services
                     PayPeriodId = newPayPeriod.Id
                 };
 
-                //_userManager.Users
-
                 _context.TimeSheetReports.Add(newTimeSheetReport);
-
                 _context.SaveChanges();
             }
 
