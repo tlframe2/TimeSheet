@@ -9,14 +9,6 @@ namespace TimeSheet.Models
     [Table("TimeSheetReports", Schema = "TimeSheet")]
     public class TimeSheetReport : EntityBase
     {
-        //[Required]
-        //[DataType(DataType.Date)]
-        //public DateTime PeriodStartDate { get; set; }
-
-        //[Required]
-        //[DataType(DataType.Date)]
-        //public DateTime PeriodEndDate { get; set; }
-
         [Required]
         [Display(Name = "Total Regular Hours")]
         public double? TotalRegHours { get; set; }

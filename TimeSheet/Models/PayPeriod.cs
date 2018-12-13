@@ -17,9 +17,6 @@ namespace TimeSheet.Models
         [DataType(DataType.Date)]
         public DateTime PeriodEndDate { get; set; }
 
-        //[ForeignKey("TimeSheetReport")]
-        //public TimeSheetReport TimeSheetReport { get; set; }
-
         [InverseProperty(nameof(TimeSheetReport.PayPeriod))]
         public List<TimeSheetReport> TimeSheetReports { get; set; } = new List<TimeSheetReport>();
     }

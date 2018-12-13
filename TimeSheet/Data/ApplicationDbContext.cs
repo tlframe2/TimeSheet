@@ -40,7 +40,6 @@ namespace TimeSheet.Data
             builder.Entity<TimeSheetReport>().Property(e => e.TotalPeriodPay).HasColumnType("money");
         }
 
-        //public new DbSet<User> Users { get; set; }
         public DbSet<PayPeriod> PayPeriods { get; set; }
         public DbSet<WorkDay> WorkDays { get; set; }
         public DbSet<TimeSheetReport> TimeSheetReports { get; set; }

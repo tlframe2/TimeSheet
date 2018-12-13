@@ -22,9 +22,6 @@ namespace TimeSheet.Services
 
         public TimeSheetReport GetCurrentPayPeriodReport(User currentUser)
         {
-            //var currentReport = _context.TimeSheetReports.Where(e => e.UserId == currentUser.Id).OrderBy(e => e.PayPeriodId).Last();
-            //currentReport = await ComputeReportAsync(currentReport);
-            //return currentReport;
             return _context.TimeSheetReports.Where(e => e.UserId == currentUser.Id).OrderBy(e => e.PayPeriodId).Last();
         }
 
@@ -33,13 +30,6 @@ namespace TimeSheet.Services
             return await _context.WorkDays.Where(e => e.TimeSheetReport.UserId == currentUser.Id).ToArrayAsync();
         }
 
-        //private async Task<bool> ComputeReportAsync(TimeSheetReport report)
-        //{
-        //    List<WorkDay> workDays = report.WorkDays;
-        //    report.TotalRegHours = workDays.Sum(e => e.HoursWorked);
-        //    var saveResult = await _context.SaveChangesAsync();
-        //    return saveResult == 1;
-        //}
         private async Task<TimeSheetReport> ComputeReportAsync(TimeSheetReport report)
         {
             List<WorkDay> workDays = report.WorkDays;
