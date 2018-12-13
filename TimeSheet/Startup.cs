@@ -48,6 +48,7 @@ namespace TimeSheet
 
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IWorkDayService, WorkDayService>();
+            services.AddScoped<ITimeSheetService, TimeSheetService>();
             //services.AddScoped<IDbInit, DbInit>();
             services.AddTransient<Initializer>();
             //services.AddTransient<PayPeriodInitializer>();
