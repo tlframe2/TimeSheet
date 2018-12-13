@@ -11,23 +11,9 @@ namespace TimeSheet.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly UserManager<User> _userManager;
-
-        public HomeController(UserManager<User> userManager)
+        public IActionResult Index()
         {
-            _userManager = userManager;
-        }
-
-        public async Task<IActionResult> Index()
-        {
-            var currentUser = await GetCurrentUserAsync();
-
-            var model = new User
-            {
-                FirstName = currentUser.FirstName
-            };
-
-            return View(model);
+            return View();
         }
 
         public IActionResult About()
@@ -54,7 +40,5 @@ namespace TimeSheet.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
-        private Task<User> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
     }
 }
