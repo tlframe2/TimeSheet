@@ -34,29 +34,44 @@ namespace TimeSheet.Services
 
                 _context.PayPeriods.Add(newPayPeriod);
 
+                //TimeSheetReport newTimeSheetReport = new TimeSheetReport()
+                //{
+                //    TotalRegHours = calculateTotalHours(newWorkDay),
+                //    TotalOTHours = 0,
+                //    TotalPeriodPay = currentUser.HourlyWage * calculateTotalHours(newWorkDay),
+                //    UserId = currentUser.Id,
+                //    PayPeriodId = newPayPeriod.Id
+                //};
+
                 TimeSheetReport newTimeSheetReport = new TimeSheetReport()
                 {
-                    TotalRegHours = calculateTotalHours(newWorkDay),
+                    TotalRegHours = 0,
                     TotalOTHours = 0,
-                    TotalPeriodPay = currentUser.HourlyWage * calculateTotalHours(newWorkDay),
+                    TotalPeriodPay = 0,
                     UserId = currentUser.Id,
                     PayPeriodId = newPayPeriod.Id
                 };
 
-                //_userManager.Users
-
                 _context.TimeSheetReports.Add(newTimeSheetReport);
-
                 _context.SaveChanges();
             }
 
             if (_context.TimeSheetReports.Where(e => e.UserId == currentUser.Id).Count() < 1)
             {
+                //TimeSheetReport newTimeSheetReport = new TimeSheetReport()
+                //{
+                //    TotalRegHours = calculateTotalHours(newWorkDay),
+                //    TotalOTHours = 0,
+                //    TotalPeriodPay = currentUser.HourlyWage * calculateTotalHours(newWorkDay),
+                //    UserId = currentUser.Id,
+                //    PayPeriodId = _context.PayPeriods.OrderBy(e => e.Id).ToList().Last().Id
+                //};
+
                 TimeSheetReport newTimeSheetReport = new TimeSheetReport()
                 {
-                    TotalRegHours = calculateTotalHours(newWorkDay),
+                    TotalRegHours = 0,
                     TotalOTHours = 0,
-                    TotalPeriodPay = currentUser.HourlyWage * calculateTotalHours(newWorkDay),
+                    TotalPeriodPay = 0,
                     UserId = currentUser.Id,
                     PayPeriodId = _context.PayPeriods.OrderBy(e => e.Id).ToList().Last().Id
                 };

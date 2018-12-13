@@ -1,5 +1,5 @@
 ﻿@model WorkDay
-<!--
+
 <form asp-action="AddWorkDay" method="POST">
     <label asp-for="ClockIn">Clock In Time:</label>
     <input asp-for="ClockIn" type="datetime-local" />
@@ -7,9 +7,9 @@
     <input asp-for="ClockOut" type="datetime-local" />
     <button type="submit">Add</button>
 </form>
-    -->
-<!--
-<table class="table table-bordered">
+
+
+@*<table class="table table-bordered">
     <thead class="thead-dark">
     </thead>
     <tbody>
@@ -21,6 +21,7 @@
             <td><button type="submit" class="btn btn-dark btn-group-sm">Add</button></td>
         </tr>
     </tbody>
+<<<<<<< HEAD
 </table>
 -->
 <form asp-action="AddWorkDay" method="POST">
@@ -40,6 +41,34 @@
             <div class="col-sm-4">
                 Supervisor
             </div>
+=======
+</table>*@
+
+
+@*<div id="Payrollcontainer">
+    <div class="row d-flex" id="WorkDayUpperHalf">
+        <div class="col-sm-4">
+            PayPeriod<br />
+            Start Date - End Date
+        </div>
+        <div class="col-sm-4">
+            Name<br />
+            ID<br />
+            Dept<br />
+            Title<br />
+            Email
+        </div>
+        <div class="col-sm-4">
+            Supervisor
+        </div>
+    </div>
+    <div class="row d-flex" id="WorkDayLowerHalf">
+        <div class="col-sm-3">
+            <label asp-for="ClockIn">Clock In Time:</label>
+        </div>
+        <div class="col-sm-3">
+            <input asp-for="ClockIn" type="datetime-local" />
+>>>>>>> ab0cc3071c4f13731ce6c6db076f477e5c2595c3
         </div>
         <div class="row d-flex" id="WorkDayLowerHalf">
             <div class="col-sm-3">
@@ -61,5 +90,14 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
 </form>
 <!--<script src="~/js/site.js"></script>-->
+=======
+    <div class="row d-flex" id="WorkDayButton">
+        <div class="col-sm-12">
+            <button type="submit" class="btn btn-dark btn-group-sm">Add</button>
+        </div>
+    </div>
+</div>*@
+>>>>>>> ab0cc3071c4f13731ce6c6db076f477e5c2595c3

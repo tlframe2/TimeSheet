@@ -1,0 +1,8 @@
+﻿@model WorkDaysViewModel
+
+@foreach (var workDay in Model.WorkDays)
+{
+    <h1>@workDay.ClockIn</h1>
+    <h1>@workDay.ClockOut</h1>
+    <h1>@workDay.HoursWorked</h1>
+}
