@@ -22,42 +22,44 @@
         </tr>
     </tbody>
 </table>
-    -->
-
-<div id="Payrollcontainer">
-    <div class="row d-flex" id="WorkDayUpperHalf">
-        <div class="col-sm-4">
-            PayPeriod<br />
-            Start Date - End Date
+-->
+<form asp-action="AddWorkDay" method="POST">
+    <div id="Payrollcontainer">
+        <div class="row d-flex" id="WorkDayUpperHalf">
+            <div class="col-sm-4">
+                PayPeriod<br />
+                Start Date - End Date
+            </div>
+            <div class="col-sm-4">
+                Name<br />
+                ID<br />
+                Dept<br />
+                Title<br />
+                Email
+            </div>
+            <div class="col-sm-4">
+                Supervisor
+            </div>
         </div>
-        <div class="col-sm-4">
-            Name<br />
-            ID<br />
-            Dept<br />
-            Title<br />
-            Email
+        <div class="row d-flex" id="WorkDayLowerHalf">
+            <div class="col-sm-3">
+                <label asp-for="ClockIn">Clock In Time:</label>
+            </div>
+            <div class="col-sm-3">
+                <input asp-for="ClockIn" type="datetime-local" id="ClockIn" value="2018-12-13T09:30:00" />
+            </div>
+            <div class="col-sm-3">
+                <label asp-for="ClockOut">Clock Out Time:</label>
+            </div>
+            <div class="col-sm-3">
+                <input asp-for="ClockOut" type="datetime-local" id="ClockOut" value="2018-12-13T11:30:00" />
+            </div>
         </div>
-        <div class="col-sm-4">
-            Supervisor
+        <div class="row d-flex" id="WorkDayButton">
+            <div class="col-sm-12">
+                <button type="submit" onclick="myFunction()" class="btn btn-dark btn-group-sm">Add</button>
+            </div>
         </div>
     </div>
-    <div class="row d-flex" id="WorkDayLowerHalf">
-        <div class="col-sm-3">
-            <label asp-for="ClockIn">Clock In Time:</label>
-        </div>
-        <div class="col-sm-3">
-            <input asp-for="ClockIn" type="datetime-local" />
-        </div>
-        <div class="col-sm-3">
-            <label asp-for="ClockOut">Clock Out Time:</label>
-        </div>
-        <div class="col-sm-3">
-            <input asp-for="ClockOut" type="datetime-local" />
-        </div>
-    </div>
-    <div class="row d-flex" id="WorkDayButton">
-        <div class="col-sm-12">
-            <button type="submit" class="btn btn-dark btn-group-sm">Add</button>
-        </div>
-    </div>
-</div>
+</form>
+<!--<script src="~/js/site.js"></script>-->
